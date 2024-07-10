@@ -1,5 +1,6 @@
 package com.aghogho.snoopandroidtask.data.remote.cat_dto
 
+import android.util.Log
 import com.aghogho.snoopandroidtask.domain.model.CatModel
 import com.google.gson.annotations.SerializedName
 
