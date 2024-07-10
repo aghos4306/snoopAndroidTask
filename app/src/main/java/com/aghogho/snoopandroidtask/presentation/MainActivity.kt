@@ -1,4 +1,4 @@
-package com.aghogho.snoopandroidtask
+package com.aghogho.snoopandroidtask.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.aghogho.snoopandroidtask.ui.theme.SnoopAndroidTaskTheme
+import com.aghogho.snoopandroidtask.presentation.ui.theme.SnoopAndroidTaskTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

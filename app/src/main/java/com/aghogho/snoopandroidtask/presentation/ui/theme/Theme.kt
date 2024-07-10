@@ -1,4 +1,4 @@
-package com.aghogho.snoopandroidtask.ui.theme
+package com.aghogho.snoopandroidtask.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
