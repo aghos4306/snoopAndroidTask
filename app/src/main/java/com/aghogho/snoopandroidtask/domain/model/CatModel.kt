@@ -6,5 +6,6 @@ data class CatModel(
     val id: String,
     val image: Image?,
     val name: String,
-    val origin: String
+    val origin: String,
+    val referenceImageId: String?
 )

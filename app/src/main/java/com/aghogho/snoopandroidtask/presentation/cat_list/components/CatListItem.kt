@@ -20,12 +20,13 @@ import com.aghogho.snoopandroidtask.domain.model.CatModel
 @Composable
 fun CatListItem(
     catItems: CatModel,
-    onItemClick: (CatModel) -> Unit
+    //onItemClick: (CatModel) -> Unit
+    onItemClick: (String) -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onItemClick(catItems) }
+            .clickable { catItems.referenceImageId?.let { onItemClick(it) } }
             .padding(20.dp)
     ) {
         catItems.image?.url?.let { imageUrl ->

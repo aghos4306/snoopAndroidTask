@@ -69,6 +69,7 @@ fun CatDto.toCatModel(): CatModel {
         id = id,
         image = image,
         name = name,
-        origin = origin
+        origin = origin,
+        referenceImageId = referenceImageId
     )
 }
