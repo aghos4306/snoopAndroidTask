@@ -1,6 +1,5 @@
 package com.aghogho.snoopandroidtask.domain.usecases.cat_detail
 
-import android.util.Log
 import com.aghogho.snoopandroidtask.data.remote.cat_dto.cat_detail_dto.toCatDetailModel
 import com.aghogho.snoopandroidtask.domain.model.CatDetailModel
 import com.aghogho.snoopandroidtask.domain.repository.CatRepository
@@ -20,10 +19,8 @@ class GetCatDetailedInfoUseCase @Inject constructor(
             val catDetailData = catRepository.getCatDetailedInfo(id).toCatDetailModel()
             emit(Resource.Success(catDetailData))
         } catch (e: HttpException) {
-            Log.e("GetCatDetailedInfoUseCase", "HTTP error: ${e.response()?.errorBody()?.string()}")
             emit(Resource.Error(e.localizedMessage ?: "Unexpected Error Occurred..."))
         } catch (e: IOException) {
-            Log.e("GetCatDetailedInfoUseCase", "Network error: ${e.localizedMessage}")
             emit(Resource.Error("Error fetching data, check your network..."))
         }
     }
