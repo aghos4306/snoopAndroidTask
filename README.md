@@ -35,6 +35,13 @@ Catify is an Android application that displays a list of cat breeds with detaile
 - Open the project in Android Studio.
 - Add your Cat API key in local.properties CAT_API_KEY=your_api_key_here
 - Build and run the project
+  ```sh
+  ./gradlew build
+
+### Run Test
+- Run test using the command on Android studio
+  ```sh
+  ./gradlew test
 
 ### Acknowledgement
 - TheCatApi for providing the cat data
