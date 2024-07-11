@@ -1,6 +1,7 @@
 package com.aghogho.snoopandroidtask.data.remote.cat_dto
 
 import android.util.Log
+//import com.aghogho.snoopandroidtask.data.local.cat_entity.CatEntity
 import com.aghogho.snoopandroidtask.domain.model.CatModel
 import com.google.gson.annotations.SerializedName
 
@@ -70,6 +71,7 @@ fun CatDto.toCatModel(): CatModel {
         image = image,
         name = name,
         origin = origin,
-        referenceImageId = referenceImageId
+        referenceImageId = referenceImageId,
+        isFavourited = false
     )
 }

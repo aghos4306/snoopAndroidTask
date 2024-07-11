@@ -32,7 +32,8 @@ fun CatListScreen(
                     catItems = catData,
                     onItemClick = {
                         navController.navigate(Screen.CatDetailScreen.route + "/${it}")
-                    }
+                    },
+                    onFavouriteClicked = { catListViewModel.toggleFavourite(it) }
                 )
                 Divider(modifier = Modifier.padding(horizontal = 16.dp))
             }

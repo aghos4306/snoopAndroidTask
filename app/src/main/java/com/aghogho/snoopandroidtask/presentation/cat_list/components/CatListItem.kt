@@ -9,6 +9,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,8 +25,8 @@ import com.aghogho.snoopandroidtask.domain.model.CatModel
 @Composable
 fun CatListItem(
     catItems: CatModel,
-    //onItemClick: (CatModel) -> Unit
-    onItemClick: (String) -> Unit
+    onItemClick: (String) -> Unit,
+    onFavouriteClicked: (CatModel) -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -40,6 +45,12 @@ fun CatListItem(
         Column {
             Text(text = catItems.name, style = MaterialTheme.typography.headlineSmall)
             Text(text = catItems.origin, style = MaterialTheme.typography.bodyMedium)
+        }
+        IconButton(onClick = { onFavouriteClicked(catItems) }) {
+            Icon(
+                imageVector = if (catItems.isFavourited) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                contentDescription = "favorite"
+            )
         }
     }
 }

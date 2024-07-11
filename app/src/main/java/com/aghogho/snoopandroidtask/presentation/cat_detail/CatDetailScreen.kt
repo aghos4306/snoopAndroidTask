@@ -22,6 +22,7 @@ import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 @Composable
 fun CatDetailScreen(
+    navController: NavController,
     id: String,
     catDetailViewModel: CatDetailViewModel = hiltViewModel()
 ) {

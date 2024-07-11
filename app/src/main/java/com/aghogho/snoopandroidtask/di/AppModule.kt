@@ -1,5 +1,7 @@
 package com.aghogho.snoopandroidtask.di
 
+import android.content.Context
+import com.aghogho.snoopandroidtask.data.local.shared_pref.PreferenceHelper
 import com.aghogho.snoopandroidtask.data.remote.CatApiService
 import com.aghogho.snoopandroidtask.data.repository.CatRepositoryImpl
 import com.aghogho.snoopandroidtask.domain.repository.CatRepository
@@ -7,6 +9,7 @@ import com.aghogho.snoopandroidtask.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -15,7 +18,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
     @Provides
     @Singleton
     fun provideCatApi(): CatApiService {
@@ -25,10 +27,14 @@ object AppModule {
             .build()
             .create(CatApiService::class.java)
     }
-
     @Provides
     @Singleton
-    fun provideCatRepository(catApiService: CatApiService): CatRepository {
+    fun provideCatRepository(catApiService: CatApiService, ): CatRepository {
         return CatRepositoryImpl(catApiService)
+    }
+    @Provides
+    @Singleton
+    fun providePreferencesHelper(@ApplicationContext context: Context): PreferenceHelper {
+        return PreferenceHelper(context)
     }
 }

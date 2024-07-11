@@ -6,9 +6,7 @@ import com.aghogho.snoopandroidtask.data.remote.cat_dto.cat_detail_dto.CatDetail
 import com.aghogho.snoopandroidtask.domain.repository.CatRepository
 import javax.inject.Inject
 
-class CatRepositoryImpl @Inject constructor(
-    private val catApiService: CatApiService
-): CatRepository {
+class CatRepositoryImpl @Inject constructor(private val catApiService: CatApiService): CatRepository {
     override suspend fun getListOfCatBreed(): List<CatDto> {
         return catApiService.getListOfCatBreed()
     }
