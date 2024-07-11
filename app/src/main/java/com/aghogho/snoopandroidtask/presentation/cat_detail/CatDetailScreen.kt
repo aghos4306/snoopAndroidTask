@@ -152,7 +152,7 @@ fun CatDetailScreen(
                         Text(
                             text = catData.wikipediaUrl,
                             style = MaterialTheme.typography.bodyMedium,
-                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
                         )
                     }
                 } else if (catDetailState.error.isNotBlank()) {
