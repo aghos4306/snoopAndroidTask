@@ -43,6 +43,9 @@ Catify is an Android application that displays a list of cat breeds with detaile
   ```sh
   ./gradlew test
 
+### Assumption
+- If it was a production app, I will write viewmodel test, end to end test
+
 ### Acknowledgement
 - TheCatApi for providing the cat data
 
