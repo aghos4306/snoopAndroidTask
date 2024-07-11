@@ -54,7 +54,7 @@ fun CatDetailScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = catDetailState.catDetailData?.name ?: "Cat Detail",
+                        text = catDetailState.catDetailData?.name ?: "",
                         modifier = Modifier.fillMaxWidth(),
                         style = MaterialTheme.typography.headlineMedium.copy(
                             fontSize = 20.sp,

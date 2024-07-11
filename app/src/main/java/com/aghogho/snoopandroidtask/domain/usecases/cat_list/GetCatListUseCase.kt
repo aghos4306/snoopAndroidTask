@@ -16,9 +16,9 @@ class GetCatListUseCase @Inject constructor(
     operator fun invoke(): Flow<Resource<List<CatModel>>> = flow {
         try {
             emit(Resource.Loading())
-            val catsData = catRepository.getListOfCatBreed().map {
-                it.toCatModel()
-            }
+            val catsData = catRepository.getListOfCatBreed()
+                .map { it.toCatModel() }
+                .filter { it.image?.url != null }
             emit(Resource.Success(catsData))
         } catch (e: HttpException) {
             emit(Resource.Error(e.localizedMessage ?: "Unexpected Error Occurred..."))
