@@ -27,7 +27,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -37,9 +36,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import coil.compose.SubcomposeAsyncImage
-import coil.compose.SubcomposeAsyncImageContent
 import com.aghogho.snoopandroidtask.util.navigateToUrl
+import com.aghogho.snoopandroidtask.util.widgets.CircularImage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -102,16 +100,11 @@ fun CatDetailScreen(
                                 .background(Color.Gray)
                                 .align(Alignment.CenterHorizontally)
                         ) {
-                            SubcomposeAsyncImage(
-                                model = catData.imageUrl,
+                            CircularImage(
+                                imageUrl = catData.imageUrl,
                                 contentDescription = catData.name,
-                                modifier = Modifier
-                                    .size(200.dp)
-                                    .clip(CircleShape),
-                                contentScale = ContentScale.Crop
-                            ) {
-                                SubcomposeAsyncImageContent()
-                            }
+                                size = 200.dp
+                            )
                         }
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(
