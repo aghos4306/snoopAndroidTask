@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CircularProgressIndicator
@@ -27,6 +28,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -35,6 +39,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
+import com.aghogho.snoopandroidtask.util.navigateToUrl
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -44,6 +49,7 @@ fun CatDetailScreen(
     catDetailViewModel: CatDetailViewModel = hiltViewModel()
 ) {
     val catDetailState = catDetailViewModel.catDetailState.value
+    val context = LocalContext.current
 
     LaunchedEffect(id) {
         catDetailViewModel.getCatDetailInfo(id)
@@ -149,10 +155,14 @@ fun CatDetailScreen(
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.primary
                         )
-                        Text(
-                            text = catData.wikipediaUrl,
+                        ClickableText(
+                            text = AnnotatedString(
+                                text = catData.wikipediaUrl,
+                                spanStyle = SpanStyle(color = Color.Blue)
+                            ),
                             style = MaterialTheme.typography.bodyMedium,
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier.fillMaxWidth(),
+                            onClick = { navigateToUrl(context, catData.wikipediaUrl) }
                         )
                     }
                 } else if (catDetailState.error.isNotBlank()) {
